@@ -1,0 +1,11 @@
+{
+  "name": "IDSafe-Server",
+  "version": "0.0.0",
+  "authors": [
+    "Frederic Jacobs <github@fredericjacobs.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "openpgp": "~1.2.0"
+  }
+}

@@ -1,0 +1,15 @@
+<html>
+    <head>
+    </head>
+    <body>
+      <script src="bower_components/openpgp/dist/openpgp.js"></script>
+      <script src="fileprocessing.js"></script>
+      <form enctype="multipart/form-data">
+        Choose a file to upload: <input id="uploadedFile" name="uploadedfile" type="file" /><br />
+      </form>
+
+      <output id="list"></output>
+
+      <script>document.getElementById('uploadedFile').addEventListener('change', uploadFileAdapter, false);</script>
+    </body>
+</html>
