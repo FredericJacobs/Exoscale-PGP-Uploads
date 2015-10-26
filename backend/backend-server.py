@@ -5,7 +5,7 @@ import base64
 import hmac
 import hashlib
 from requestsigner import AwsV2Auth
-from urlparse       import urlparse
+from urlparse       import urlparse, parse_qs
 from time           import time
 
 KEY = "XXX"
@@ -19,8 +19,8 @@ class TokenRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             return SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
 
         query = urlparse(self.path).query
-        query_components = dict(qc.split("=") for qc in query.split("&"))
-        ct = query_components["contentType"]
+        query_components = parse_qs(query)
+        ct = query_components["contentType"][0]
 
 
         key = base64.b32encode(hmac.new(str(time()), "1", hashlib.sha512).digest())[0:30]
