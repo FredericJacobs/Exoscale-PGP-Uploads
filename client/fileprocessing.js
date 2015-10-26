@@ -31,7 +31,7 @@ function requestUploadToken(file) {
     function(resolve, reject) {
       var content_type = file.type;
       var client = new XMLHttpRequest();
-      client.open('GET', "token/?contentType="+"application/pgp-encrypted");
+      client.open('GET', "token/?contentType="+ encodeURIComponent("application/pgp-encrypted; charset=UTF-8"));
 
       client.onreadystatechange = function() {
         if (client.readyState != 4) {
@@ -57,7 +57,7 @@ function objStorageUpload (ciphertext, contentType, uploadURL){
     function(resolve, reject) {
       var client = new XMLHttpRequest();
       client.open('PUT', uploadURL)
-      client.setRequestHeader("Content-Type", "application/pgp-encrypted");
+      client.setRequestHeader("Content-Type", "application/pgp-encrypted; charset=UTF-8");
       client.onreadystatechange = function() {
         if (client.readyState != 4) {
           return;
